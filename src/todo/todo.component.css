@@ -1,0 +1,530 @@
+.repitition {
+  padding-right: 0.8rem;
+  text-transform: capitalize;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.title {
+  display: inline-flex;
+  align-items: center;
+}
+
+.image-title img {
+  width: 4rem;
+  height: 4rem;
+
+}
+
+.container-description-date-time-todo {
+  display: inline-grid;
+  justify-items: end;
+}
+
+.principal {
+  width: 100%;
+}
+
+.div-up-clear {
+  height: 19px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.update-page {
+  cursor: default;
+}
+
+.clear img {
+  width: 0.7rem;
+  height: 0.7rem;
+  cursor: pointer;
+}
+
+.remove {
+  margin: -4px 0px;
+  padding: 0px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.remove button {
+  /* color: #bd0303; */
+  font-size: 13px;
+  /* background: #caddff; */
+  display: grid;
+  justify-items: center;
+  border-radius: 14px;
+  cursor: pointer;
+  border: none;
+}
+
+.modo img {
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+}
+
+.title .title-principal {
+  font-family: 'Roboto';
+  font-style: normal;
+  margin-left: 1rem;
+  /* color: #4D4B4B; */
+}
+
+h1,
+h3 {
+  margin: 0;
+  font-family: 'Roboto';
+  font-style: normal;
+}
+
+.container-todo {
+  margin-top: 0.5rem;
+  position: relative;
+  display: grid;
+  align-items: start;
+  justify-items: center;
+}
+
+.container-tasks,
+.container-add-alt-task,
+.tasks {
+  margin: 0.5rem 0rem;
+}
+
+.container-add-alt-task {
+  display: inline-grid;
+  width: 100%;
+  height: 3rem;
+  padding: 0.3rem 0.1rem 0.8rem 0.1rem;
+  border-radius: 10px;
+}
+
+.container-add-alt-task hr {
+  color: gray;
+  width: 100%;
+  margin: 0;
+}
+
+.title-task-first-line {
+  display: inline-flex;
+}
+
+.title-task-first-line button {
+  width: 34px;
+  height: 30px;
+  cursor: pointer;
+  border: none;
+}
+
+.title-task-first-line input,
+.description .description-input {
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+.title-task-first-line input,
+.description .description-input {
+  margin-left: 0.7rem;
+  font-family: 'Inria Serif';
+  font-style: normal;
+  font-size: 16px;
+}
+
+
+
+.description {
+  width: 100%;
+  display: inline-flex;
+  margin-top: 0.2rem;
+}
+
+.description img {
+  padding-right: 3px;
+}
+
+.icon {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  /* color: #222222; */
+}
+
+.date {
+  width: 6.1rem;
+  margin-right: 0.2rem;
+}
+
+.time {
+  width: 4.2rem;
+}
+
+/* Styles table tasks ---------------------------------------------------------------------------------------------*/
+.tasks-container {
+  width: 100%;
+}
+
+.task td:last-child {
+  flex: 1 0 100%;
+  margin-left: 0.5rem;
+}
+
+.title-classification {
+  display: ruby;
+}
+
+.title-classification span,
+.completed {
+  cursor: default;
+}
+
+.completed img {
+  width: 10px;
+  height: 10px;
+}
+
+.title-classification h4 {
+  margin-right: 1rem;
+}
+
+.title-classification img {
+  width: 10px;
+  height: 10px;
+  margin-right: 0.2rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Estilo do cabeçalho */
+h4 {
+  text-align: left;
+  font-family: "Inria Serif";
+  font-style: normal;
+  font-size: 14px;
+}
+
+h4 {
+  margin: 1.2rem 0 0rem 0;
+}
+
+.menu-dropdown,
+.repeat {
+  position: absolute;
+  top: 150px;
+  left: 0;
+  /* background-color: #ffffff; */
+  /* border: 1px solid #ccc; */
+  border-radius: 8px;
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+  padding: 4px;
+  z-index: 1000;
+  min-width: 150px;
+}
+
+.menu-dropdown img {
+  width: 14px;
+  height: 14px;
+  margin-right: 10px;
+}
+
+/* Texto no topo do menu */
+.menu-dropdown span,
+.repeat span {
+  font-weight: bold;
+  display: block;
+  margin: 7px 9px;
+  font-size: 13px;
+}
+
+/* Botões dentro do menu */
+.menu-dropdown button,
+.repeat button {
+  display: flex;
+  width: 100%;
+  text-align: left;
+  padding: 6px;
+  border: none;
+  background-color: transparent;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.repeat button {
+  display: inline-flex;
+  align-items: center;
+}
+
+.repeat {
+  top: 95px;
+  display: inline-grid;
+  left: 62%;
+  justify-items: stretch;
+
+}
+
+.repeat img {
+  width: 11px;
+  height: 11px;
+  padding-right: 0.7rem;
+}
+
+/* Estilo das linhas */
+.task {
+  border-radius: 10px;
+  padding: 10px 3px;
+  margin: 0.4rem 0;
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  transition: background-color 0.2s ease;
+}
+
+.task-options-title-check {
+  margin-left: 0.3rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Célula de título */
+.task-title {
+  font-weight: 500;
+  font-family: 'Inter';
+  font-size: 14px;
+  text-align: left;
+  padding-left: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+}
+
+.task-description {
+  flex: 1 0 100%;
+  font-size: 14px;
+  flex-basis: 100%;
+  text-align: left;
+
+
+}
+
+.task-options-describe {
+  width: 30%;
+  font-size: 14px;
+  display: inline-flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.task-options-describe span {
+  margin: 0 0.1rem;
+}
+
+.task img {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+.tas {
+  width: max-content;
+}
+
+
+/* RESPONSIVIDADE */
+
+@media screen and (max-width: 400px) {
+  .task-title {
+    width: 20em;
+    margin: 0;
+    font-size: 12px;
+  }
+
+  .container-global {
+    width: 80%;
+    height: max-content;
+  }
+
+  .container-todo {
+    width: 100%;
+  }
+
+  .task-options-title-check {
+    margin-left: 0;
+    display: flex;
+    width: 60%;
+  }
+
+  .task td:last-child {
+    font-size: 12px;
+  }
+
+  .title-classification,
+  h4 {
+    font-size: 12px;
+  }
+
+  .task-options-describe {
+    font-size: 12px;
+  }
+
+
+}
+
+@media screen and (max-width: 530px) {
+  .task td:last-child {
+    margin: 0rem;
+
+  }
+
+  .modo img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .time {
+    width: 1.8rem;
+    margin-left: -0.6rem;
+  }
+
+  .date {
+    width: 1.1rem;
+  }
+
+
+}
+
+@media (max-width: 600px) {
+  .menu-dropdown {
+    left: 10px;
+    right: 10px;
+    min-width: auto;
+  }
+
+  .repeat {
+    left: 10px;
+    right: 10px;
+    min-width: auto;
+  }
+
+  h1,
+  h3 {
+    font-size: 16px;
+  }
+
+  .image-title img {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  body{
+    padding: -1rem;
+    margin: -1rem;
+  }
+
+  .container-global{
+    padding: -1rem;
+    margin: -1rem;
+    width: 95%;
+
+    height: 120%;
+  }
+  .container-todo{
+    padding: -2rem;
+  }
+
+}
+
+@media screen and (min-width: 401) and (max-width:500px) {
+  .task-title {
+    width: 12em;
+  }
+
+  .container-global {
+    width: 80%;
+    height: max-content;
+  }
+
+  .container-todo {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 501) and (max-width: 600px) {
+  .task-title {
+    width: 1rem;
+  }
+
+  .container-global {
+    width: min-content;
+    height: max-content;
+  }
+
+  .tasks-container {
+    width: 90%;
+  }
+
+}
+
+@media screen and (min-width: 601) and (max-width: 700px) {
+  .task-title {
+    width: 15em;
+  }
+
+  .container-global {
+    width: 60%;
+    height: max-content;
+  }
+
+  .tasks-container {
+    width: 90%;
+  }
+
+  .repeat {
+    width: 48%;
+  }
+}
+
+@media screen and (min-width: 701) and (max-width: 900px) {
+  .task-title {
+    width: 15em;
+  }
+
+  .container-global {
+    width: 60%;
+    height: max-content;
+  }
+
+  .repeat {
+    width: 48%;
+  }
+
+}
+
+@media screen and (min-width: 901px) {
+  .container-global {
+    width: 40rem;
+    height: max-content;
+  }
+
+  .task-title {
+    width: 23em;
+  }
+
+  .repeat {
+    /* top: 78px; */
+    left: 70%;
+    width: 29%;
+  }
+}

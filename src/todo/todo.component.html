@@ -1,0 +1,232 @@
+<div class="div-container">
+
+
+<div class="container-global">
+
+  <div class="head">
+    <div class="title">
+
+      <div class="image-title">
+        <img src="assets/Icone.png" alt="TaskList">
+      </div>
+
+      <div class="title-principal">
+        <h1>Lista de Tarefas</h1>
+        <h3 *ngIf="nowdate">{{ nowdate | date: 'dd/MM/yyyy' }}</h3>
+      </div>
+    </div>
+    <div class="modo">
+      <img src="assets/mode-dark.png" alt="mode" (click)="modetoggle()" id="mode-icon">
+    </div>
+  </div>
+
+  <div class="container-todo">
+
+    <div class="principal">
+      <div class="div-up-clear">
+
+        <div class="update-page">
+          <img (click)="loadTasks()" src="assets\atualizar.png" alt="" id="id-up-page">
+        </div>
+
+        <div class="clear" *ngIf="clearFields()">
+          <span class="repitition">{{newTask.repeat || repitition}}</span>
+          <img (click)="clear(); select = false" src="" alt="" id="id-clear-fields">
+        </div>
+      </div>
+      <div class="container-add-alt-task">
+
+        <div class="title-task-first-line">
+          <input (click)="select = true" class="title-task" type="text" [(ngModel)]="newTask.title"
+            placeholder="Insira o titulo da tarefa">
+          <button type="submit" (click)="save(); select = false">
+            <img src="assets/add.png" alt="add-task">
+          </button>
+        </div>
+        <hr>
+        <div class="container-description-date-time-todo">
+          <div class="description">
+            <input (click)="select = true" class="description-input" type="text" [(ngModel)]="newTask.description"
+              placeholder="Insira a descrição da tarefa">
+
+            <img src="assets\repeat.png" alt="" (click)="modeRepeatToggle()" id="id-repeat">
+
+            <input type="date" [(ngModel)]="newTask.date" class="icon date">
+            <input type="time" [(ngModel)]="newTask.time" class="icon time">
+          </div>
+          <div class="repeat" *ngIf="r" [(ngModel)]="newTask.repeat">
+            <div>
+              <span>Repetir: </span>
+            </div>
+            <button (click)="toggleMenuRepeat(1)">
+              <img
+                [src]="darkmode ? 'assets/repeat-calendar-dark.png' : 'assets/repeat-calendar.png'"
+                src="assets\repeat-calendar.png" id="id-repeat-calendar" alt=""> Diariamente
+            </button>
+            <button (click)=" toggleMenuRepeat(2)">
+              <img id="id-repeat-calendar2"
+               [src]="darkmode ? 'assets/repeat-calendar-dark.png' : 'assets/repeat-calendar.png'"
+                src="assets\repeat-calendar.png" alt=""> Semanalmente
+            </button>
+            <button (click)=" toggleMenuRepeat(3)">
+              <img id="id-repeat-calendar3"
+              [src]="darkmode ? 'assets/repeat-calendar-dark.png' : 'assets/repeat-calendar.png'"
+              src="assets\repeat-calendar.png" alt="">Mensalmente
+            </button>
+            <button (click)="toggleMenuRepeat(4)">
+              <img id="id-repeat-calendar4"
+              [src]="darkmode ? 'assets/repeat-calendar-dark.png' : 'assets/repeat-calendar.png'"
+               src="assets\repeat-calendar.png" alt="">Anualmente
+            </button>
+            <button (click)="toggleMenuRepeat(5)">
+              <img id="id-repeat-calendar5"
+              [src]="darkmode ? 'assets/no-repeat-dark.png' : 'assets/no-repeat.png'"
+              src="assets\no-repeat.png" alt="">Sem repetição
+            </button>
+          </div>
+
+        </div>
+      </div>
+      <div class="remove" *ngIf="shouldShowRemoveButton()">
+        <button (click)="clearTime()">{{remove}}</button>
+      </div>
+
+    </div>
+    <div class="tasks-container">
+      <div>
+        <div class="tasks">
+
+          <div class="title-classification">
+
+
+            <h4>Tarefas {{filteredTasks.length}}</h4>
+
+
+            <div (click)="toggleMenu()">
+              <img src="assets/ordenar.png" alt="" id="id-classifications">
+              <span>Classificar</span>
+            </div>
+            <div *ngIf="openOrder" class="menu-dropdown">
+              <div>
+                <span>Classificar por: </span>
+              </div>
+              <div>
+                <button (click)="atributeOrderTasks('date'); toggleMenu()">
+                  <img id="id-order-date" [src]="darkmode ? 'assets/order-date-dark.png' : 'assets/order-date.png'"
+                    alt="">
+                  Data de Conclusão</button>
+                <button (click)="atributeOrderTasks('title'); toggleMenu()">
+                   <img id="id-order-word"
+                    [src]="darkmode ? 'assets/order-word-dark.png' : 'assets/order-word.png'" alt="">Ordem
+                  Alfabética</button>
+                <button (click)="atributeOrderTasks('semordem'); toggleMenu()">
+                  <img id="id-no-order" [src]="darkmode ? 'assets/x2-dark.png' : 'assets/x2.png'" src="assets\x2.png"
+                    alt="" class="x">Remover
+                  Classificação</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th class="tas">
+              </th>
+              <th class="options"></th>
+              <th class="des"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let task of filteredTasks" class="task">
+
+              <td class="task-options-title-check">
+                <span (click)="this.reT(task); this.toggleStatus(task); ">
+                  <input type="checkbox" name="status" [checked]="task.status">
+                </span>
+                <span class="task-title">
+                  {{ task.title }}
+                </span>
+              </td>
+              <td class="task-options-describe">
+                <span>{{ task.date | date: 'dd/MM/yyyy' }}</span>
+                <span> {{ task.time }} </span>
+                <span *ngIf="task.repeat && task.date">
+                  <img *ngIf="task.repeat" [src]="darkmode ? 'assets/repeat-dark.png' : 'assets/repeat.png'"
+                    alt="Update" id="id-repitition" alt=""></span>
+                <span>
+                  <img *ngIf="task.id" [src]="darkmode ? 'assets/update-dark.png' : 'assets/update.png'" id="id-update"
+                    alt="update-task" (click)="selected(task);" /></span>
+                <span>
+                  <img *ngIf="task.id" [src]="darkmode ? 'assets/delete-dark.png' : 'assets/delete.png'" id="id-delete"
+                    alt="delete-task" (click)="deleteTask(task.id)" /></span>
+              </td>
+              <td class="task-description">
+               <span>
+                {{task.description}}
+               </span>
+              </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+      <div class="tasks-container">
+        <div class="tasks">
+          <div>
+            <h4 class="completed" (click)="hidetask()">
+              <img src="assets\seta-direita.png" alt="" id="hidetask">
+              Concluídas {{completedTasks.length}}
+            </h4>
+          </div>
+          <table>
+
+            <thead>
+              <tr>
+                <th class="check"></th>
+                <th class="tas"></th>
+                <th class="options"></th>
+                <th class="des"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let task of completed" class="task">
+                <td class="task-options-title-check" >
+                  <span (click)="toggleStatus(task)">
+                    <input type="checkbox" name="status" [checked]="task.status">
+                  </span>
+                  <span class="task-title" style="text-decoration: line-through">{{ task.title }}</span>
+                </td>
+                <td class="task-options-describe">
+                  <span>{{ task.date | date: 'dd/MM/yyyy' }}</span>
+                  <span> {{ task.time }} </span>
+                  <span *ngIf="task.repeat && task.date">
+                    <img *ngIf="task.repeat" [src]="darkmode ? 'assets/repeat-dark.png' : 'assets/repeat.png'"
+                      alt="Update" id="id-repitition" alt=""></span>
+                  <span>
+                    <img *ngIf="task.id" [src]="darkmode ? 'assets/update-dark.png' : 'assets/update.png'"
+                      id="id-update" alt="update-task" (click)="selected(task);" /></span>
+                  <span>
+                    <img *ngIf="task.id" [src]="darkmode ? 'assets/delete-dark.png' : 'assets/delete.png'"
+                      id="id-delete" alt="delete-task" (click)="deleteTask(task.id)" /></span>
+                </td>
+                <td class="task-description">{{task.description}}</td>
+              </tr>
+
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</div>
+</div>
